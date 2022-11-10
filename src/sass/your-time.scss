@@ -1,0 +1,270 @@
+@import './core';
+
+.big-container{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-image: linear-gradient(
+        180deg,
+        hsl(349deg 96% 72%) 0%,
+        hsl(342deg 93% 71%) 10%,
+        hsl(335deg 87% 71%) 20%,
+        hsl(327deg 78% 70%) 30%,
+        hsl(318deg 67% 69%) 40%,
+        hsl(305deg 55% 67%) 50%,
+        hsl(288deg 57% 69%) 60%,
+        hsl(272deg 66% 72%) 70%,
+        hsl(256deg 75% 75%) 80%,
+        hsl(239deg 84% 77%) 90%,
+        hsl(225deg 93% 73%) 100%
+      );
+    // border: .1px solid transparent;
+    padding: 1rem 0;
+    overflow: hidden;
+
+    color: #4B0A42;
+    perspective: 500px;
+}
+
+header{
+    // @include testing-border-1();
+    @include flex-variable(row, nowrap, space-between, center, center);
+    padding: 0 2rem;
+    position: relative;
+    z-index: 10;
+
+    @media screen and (max-width: 650px) {
+        @include flex-variable(column, nowrap, space-between, center, center);
+        gap: 1rem;
+    }
+}
+
+.current-date,
+.current-time{
+    // @include testing-border-1();
+    margin: 0;
+    // font-size: 180%;
+    // font-family: 'IM Fell English SC', serif;
+    // font-weight: 400;
+    font-family: 'Cinzel', serif;
+    font-weight: 500;
+    font-size: 160%;
+    color: rgba(31, 53, 61, 1);
+    // text-shadow: 3px 2px 5px rgba($color: #000000, $alpha: .2);
+
+    @media screen and (max-width: 420px) {
+      font-size: 120%;
+    }
+}
+
+.background{
+    background-color: #8CC7EB;
+    width: 100%;
+    min-height: 20vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    // opacity: 0.5;
+    z-index: -10;
+
+    border-radius: 10% 30% 0 0;
+    -webkit-animation: ani-opacity 3s infinite alternate ease-in-out;
+            animation: ani-opacity 3s infinite alternate ease-in-out;
+
+    &::before{
+        content: '';
+        position: absolute;
+        top: -1rem;
+        left: 5%;
+        background-color: #B18CEC;
+        width: 50%;
+        min-height: 10vh;
+        border-radius: 50%;
+        -webkit-animation: moving-wave1 5s infinite alternate ease-in-out;
+                animation: moving-wave1 5s infinite alternate ease-in-out;
+    }
+
+    &::after{
+        content: '';
+        position: absolute;
+        top: -2rem;
+        right: 1%;
+        background-color: #B18CEC;
+        width: 70%;
+        min-height: 20vh;
+        border-radius: 50% ;
+        -webkit-animation: moving-wave2 5s infinite alternate ease-in-out;
+                animation: moving-wave2 5s infinite alternate ease-in-out;
+    }
+
+}
+
+.section{
+
+    &_birthday-select,
+    &_birthday-display{
+        // @include testing-border-1();
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-height: 100vh;
+        @include flex-row-center();
+        color: #4B2745;
+    }
+
+    &_birthday-select{
+        transform: translate3d(0,0,0);
+        opacity: 1;
+
+        & form{
+            @include flex-variable(column, nowrap, flex-start, center, center);
+
+            & *{
+                margin: .5rem;
+                font-size: 120%;
+            }
+
+            & input,
+            & input:focus-visible{
+                border: none;
+                outline: none;
+                background-color: rgba(255, 255, 255, 0.2);
+                padding: .1rem;
+            }
+
+            & button{
+                border: 1px solid  rgba(75, 10, 66, 0.4);
+                width: 10rem;
+                padding: 1rem;
+                text-align: center;
+                transition: background-color .5s, border .5s;
+
+                &:hover{
+                    background-color:rgba(255, 255, 255, 0.2);
+                    border: 1px solid  transparent;
+                }
+            }
+        }
+
+        &_text{
+            font-size: 125%;
+
+              @media screen and (max-width: 1050px) {
+                text-align: center;
+
+                & span{
+                    display: block;
+                }
+            }
+
+            @media screen and (max-width: 420px) {
+                font-size: 110%;
+              }
+        }
+    }
+
+
+    &_birthday-display{
+        // border: 10px solid black;
+        z-index: -1;
+        background-color: transparent;
+        opacity: 0;
+        @include flex-variable(column, nowrap, center, center, center);
+
+        // @media screen and (max-width: 650px) {
+        //     justify-content: flex-start;
+        //     margin-top: 10rem;
+        // }
+
+        &_dropdown{
+            // padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 10rem;
+            @include box-shadow-default();
+
+            & figcaption{
+                // @include testing-border-1();
+                padding: .7rem;
+                box-shadow: inherit;
+                // text-align: center;
+                position: relative;
+                cursor: pointer;
+
+                &::after{
+                    position: absolute;
+                    content: '\25BC';
+                    top: 0;
+                    right: .5rem;
+                    height: 100%;
+                    @include flex-row-center();
+                }
+
+            }
+
+            // &:hover ul{
+            //     height: 13rem;
+            // }
+
+            & ul{
+                height: 0;
+                margin: 0;
+                overflow: hidden;
+                transition: height 1s;
+
+                & li{
+                    margin: .5rem 1rem;
+
+                    &:hover{
+                        background-color: rgba(75, 10, 66, 0.2);
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
+.bye-bye{
+    transform: translate3d(0,0,-200vw);
+    opacity: 0;
+    transition: transform .3s, opacity .3s ;
+}
+
+.good-morning{
+    // transform: translate3d(0,0,0);
+    opacity: 1;
+    transition: opacity 3s .5s;
+    z-index: 1;
+}
+
+.list-in{
+    height: 13rem !important;
+}
+
+@keyframes moving-wave1 {
+    to {
+        // border-radius: 45%;
+        width: 70%;
+        left: 1%;
+        min-height: 20vh;
+        top: -3rem;
+    }
+}
+
+@keyframes moving-wave2 {
+    to {
+        // border-radius: 20% 30% 40% 10%;
+        width: 70%;
+        min-height: 20vh;
+        right: 1%;
+        top: -5rem;
+    }
+}
+
+@keyframes ani-opacity{
+    to{
+        opacity: 0.1;
+    }
+}

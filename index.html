@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Time</title>
+    <meta name="description" content="Mit Hilfe dieser Mini App kannst du dir dein Alter in Tagen, Monaten, Stunden, Minuten oder Sekunden anzeigen lassen.">
+    <meta name="theme-color" content="#F9719D">
+    <link rel="stylesheet" href="styles/your-time.css">
+</head>
+<body>
+    <div class="big-container">
+        <header>
+            <h1 class="hidden">Your Time</h1>
+            <p class="current-date">Donnerstag, 29.10.2022, 10 Uhr 5</p>
+            <p class="current-time">
+                <span class="current-time_hours"></span>
+                <span class="current-time_minutes"></span>
+                <span class="current-time_seconds"></span>
+            </p>
+        </header>
+
+      
+        <section class="section_birthday-select">
+            <form>
+                <label for="birthday">Dein Geburtstag:</label>
+                <input type="datetime-local" id="birthday">
+                <button type="submit">Let`s go</button>
+            </form>
+        </section>
+
+        <section class="section_birthday-display">
+            <figure class="section_birthday-display_dropdown" onclick="listIn()">
+                <figcaption>XXX</figcaption>
+                <ul>
+                    <li>JMTSMS</li>
+                    <li>Jahre</li>
+                    <li>Monate</li>
+                    <li>Tage</li>
+                    <li>Stunden</li>
+                    <li>Minuten</li>
+                    <li>Sekunden</li>
+                </ul>
+            </figure>
+            <p class="section_birthday-select_text">Du bist Momentan ein Baby</p>
+        </section>
+           
+       <div class="background"></div>
+
+    </div>  
+
+    <script src="src/js/your-time.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "Mit dieser Mini App kann man sich sein genaues Alter anzeigen lassen. \r Es besteht die Möglichkeit zwischen folgenden Anzeigen zu wechseln :",
+  "main": "index.js",
+  "scripts": {
+    "built": "sass ./src/sass/your-time.scss ./styles/your-time.css --style=compressed --watch"
+  },
+  "author": "",
+  "license": "ISC"
+}
